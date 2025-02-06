@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: petAdoptionSystem
+
+
+server:
+  port: 9090
