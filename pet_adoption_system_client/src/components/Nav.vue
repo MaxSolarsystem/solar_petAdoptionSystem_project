@@ -8,8 +8,11 @@ const isLoggedIn = ref(false);
   <header>
     <nav class="navbar">
       <div class="navbar-left">
-        <router-link class="nav-link" to="/">首页</router-link>
+        <router-link class="nav-link" to="/">主页</router-link>
+        <router-link class="nav-link" to="/petAdoption">宠物领养</router-link>
         <router-link class="nav-link" to="/store">商店</router-link>
+        <router-link class="nav-link" to="/forum">论坛</router-link>
+        <router-link class="nav-link" to="/userCenter">个人中心</router-link>
       </div>
       <div class="navbar-right">
         <router-link v-if="!isLoggedIn" class="nav-link" to="/login">登录</router-link>
