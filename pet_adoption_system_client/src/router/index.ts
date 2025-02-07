@@ -1,13 +1,26 @@
 import {createRouter, createWebHistory} from 'vue-router';
 import Login from '../views/Login.vue';
-import Home from '../views/Home.vue';
+import Pet from '../views/Pet/index.vue';
 import Register from "../views/Register.vue";
+import Home from "../views/Pet/Home.vue";
+import Store from "../views/Pet/Store.vue";
 
 const routes = [
     {
         path: '/',
-        name: 'Home',
-        component: Home,
+        redirect: '/home',
+        name: 'Pet',
+        component: Pet,
+        children: [
+            {
+                path: 'home',
+                component: Home
+            },
+            {
+                path: 'store',
+                component: Store
+            }
+        ]
     },
     {
         path: '/login',
