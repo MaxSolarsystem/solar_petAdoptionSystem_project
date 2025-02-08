@@ -2,175 +2,176 @@
 
 # 数据库设计
 
-### 宠物信息表 (PetInfo)
-| 字段              | 类型   | 描述                     |
-| ----------------- | ------ | ------------------------ |
-| `image`           | String | 图片路径                 |
-| `breed`           | String | 品种【来源于宠物品种表】 |
-| `category`        | String | 分类【字典】             |
-| `color`           | String | 颜色                     |
-| `gender`          | String | 性别【字典】             |
-| `weight`          | Float  | 体重                     |
-| `birthday`        | Date   | 生日                     |
-| `healthStatus`    | String | 健康状况【字典】         |
-| `training`        | String | 训练情况【字典】         |
-| `adoptConditions` | String | 领养条件                 |
-| `personality`     | String | 性格特点                 |
-| `adoptHistory`    | String | 领养历史【字典】         |
-| `description`     | String | 简介                     |
+## 1. `announcement` 表
+| 字段名         | 类型        | 描述       |
+|----------------|-------------|------------|
+| announcement_id | bigint    | 公告ID     |
+| title          | varchar(255) | 标题       |
+| content        | text        | 内容       |
+| publish_time   | datetime    | 发布时间   |
+| updated_by     | bigint      | 更新人     |
+| updated_at     | datetime    | 更新时间   |
+| remarks        | text        | 备注       |
+| is_deleted     | varchar(2)  | 是否删除   |
+| deleted_by     | bigint      | 删除人     |
+| deleted_at     | datetime    | 删除时间   |
 
----
+**表备注**: 公告表，记录网站的公告信息，包括标题、内容、发布时间等。
 
-### 宠物品种表 (PetBreed)
-| 字段    | 类型   | 描述 |
-| ------- | ------ | ---- |
-| `breed` | String | 品种 |
+## 2. `dictionary` 表
+| 字段名         | 类型        | 描述       |
+|----------------|-------------|------------|
+| dictionary_id  | bigint      | 字典ID     |
+| name           | varchar(255) | 字典名称   |
+| description    | varchar(255) | 字典描述   |
+| updated_by     | bigint      | 更新人     |
+| updated_at     | datetime    | 更新时间   |
+| remarks        | text        | 备注       |
+| is_deleted     | varchar(2)  | 是否删除   |
+| deleted_by     | bigint      | 删除人     |
+| deleted_at     | datetime    | 删除时间   |
 
----
+**表备注**: 字典表，用于存储应用程序中的字典项，提供基础数据支持。
 
-### 商品信息表 (ProductInfo)
-| 字段          | 类型    | 描述     |
-| ------------- | ------- | -------- |
-| `name`        | String  | 名称     |
-| `image`       | String  | 图片路径 |
-| `price`       | Float   | 单价     |
-| `stock`       | Integer | 库存     |
-| `description` | String  | 简介     |
+## 3. `dictionary_item` 表
+| 字段名         | 类型        | 描述       |
+|----------------|-------------|------------|
+| item_id        | bigint      | 字典项ID   |
+| dictionary_id  | bigint      | 字典ID     |
+| value          | varchar(255) | 字典项的值 |
+| label          | varchar(255) | 字典项标签 |
+| sort_order     | int         | 排序字段   |
+| updated_by     | bigint      | 更新人     |
+| updated_at     | datetime    | 更新时间   |
+| remarks        | text        | 备注       |
+| is_deleted     | varchar(2)  | 是否删除   |
+| deleted_by     | bigint      | 删除人     |
+| deleted_at     | datetime    | 删除时间   |
 
----
+**表备注**: 字典项表，存储每个字典的具体条目，如状态、类型等。
 
-### 宠物申请管理表 (PetAdoptApplication)
-| 字段            | 类型   | 描述             |
-| --------------- | ------ | ---------------- |
-| `applicationId` | String | 申请编号         |
-| `userId`        | String | 用户ID           |
-| `petId`         | String | 宠物ID           |
-| `applyTime`     | Date   | 申请时间         |
-| `status`        | String | 申请状态【字典】 |
+## 4. `forum_post` 表
+| 字段名         | 类型        | 描述       |
+|----------------|-------------|------------|
+| post_id        | bigint      | 帖子ID     |
+| image          | varchar(255) | 图片路径   |
+| title          | varchar(255) | 标题       |
+| user_id        | bigint      | 用户ID     |
+| content        | longtext    | 内容       |
+| publish_time   | date        | 发布时间   |
+| updated_by     | bigint      | 更新人     |
+| updated_at     | datetime    | 更新时间   |
+| remarks        | text        | 备注       |
+| is_deleted     | varchar(2)  | 是否删除   |
+| deleted_by     | bigint      | 删除人     |
+| deleted_at     | datetime    | 删除时间   |
 
----
+**表备注**: 论坛帖子管理表，记录用户发布的帖子信息，包含标题、内容等。
 
-### 商品订单管理表 (ProductOrder)
-| 字段        | 类型   | 描述             |
-| ----------- | ------ | ---------------- |
-| `orderId`   | String | 订单编号         |
-| `userId`    | String | 用户ID           |
-| `productId` | String | 商品ID           |
-| `orderTime` | Date   | 下单时间         |
-| `status`    | String | 货物状态【字典】 |
+## 5. `pet_adopt_application` 表
+| 字段名         | 类型        | 描述       |
+|----------------|-------------|------------|
+| application_id | varchar(50) | 申请编号   |
+| user_id        | bigint      | 用户ID     |
+| pet_id         | bigint      | 宠物ID     |
+| apply_time     | date        | 申请时间   |
+| status         | varchar(20) | 申请状态   |
+| updated_by     | bigint      | 更新人     |
+| updated_at     | datetime    | 更新时间   |
+| remarks        | text        | 备注       |
+| is_deleted     | varchar(2)  | 是否删除   |
+| deleted_by     | bigint      | 删除人     |
+| deleted_at     | datetime    | 删除时间   |
 
----
+**表备注**: 宠物申请管理表，用于记录用户申请领养宠物的详细信息。
 
-### 论坛管理表 (ForumPost)
-| 字段          | 类型   | 描述     |
-| ------------- | ------ | -------- |
-| `image`       | String | 图片路径 |
-| `title`       | String | 标题     |
-| `userId`      | String | 用户ID   |
-| `content`     | String | 内容     |
-| `publishTime` | Date   | 发布时间 |
+## 6. `pet_breed` 表
+| 字段名         | 类型        | 描述       |
+|----------------|-------------|------------|
+| breed_id       | bigint      | 品种ID     |
+| breed          | varchar(255) | 品种名称   |
 
----
+**表备注**: 宠物品种表，记录所有宠物品种的详细信息。
 
-### 公告表 (Announcement)
-| 字段          | 类型   | 描述     |
-| ------------- | ------ | -------- |
-| `title`       | String | 标题     |
-| `content`     | String | 内容     |
-| `publishTime` | Date   | 发布时间 |
+## 7. `pet_info` 表
+| 字段名         | 类型        | 描述       |
+|----------------|-------------|------------|
+| pet_id         | bigint      | 宠物ID     |
+| image          | varchar(255) | 图片路径   |
+| breed_id       | bigint      | 品种ID     |
+| category       | varchar(10)  | 分类       |
+| color          | varchar(50)  | 颜色       |
+| gender         | varchar(2)   | 性别       |
+| weight         | varchar(20)  | 体重       |
+| birthday       | date         | 生日       |
+| health_status  | varchar(255) | 健康状况   |
+| training       | varchar(255) | 训练情况   |
+| adopt_conditions | text       | 领养条件   |
+| personality    | text        | 性格特点   |
+| adopt_history  | text        | 领养历史   |
+| description    | text        | 简介       |
+| updated_by     | bigint      | 更新人     |
+| updated_at     | datetime    | 更新时间   |
+| remarks        | text        | 备注       |
+| is_deleted     | varchar(2)  | 是否删除   |
+| deleted_by     | bigint      | 删除人     |
+| deleted_at     | datetime    | 删除时间   |
 
----
+**表备注**: 宠物信息表，记录宠物的详细资料，包括品种、性别、健康状况、领养条件等。
 
-### 用户信息表 (UserInfo)
-| 字段       | 类型   | 描述             |
-| ---------- | ------ | ---------------- |
-| `email`    | String | 邮箱             |
-| `password` | String | 密码             |
-| `phone`    | String | 手机号           |
-| `avatar`   | String | 头像路径         |
-| `userType` | String | 用户类型【字典】 |
+## 8. `product_info` 表
+| 字段名         | 类型        | 描述       |
+|----------------|-------------|------------|
+| product_id     | bigint      | 商品ID     |
+| name           | varchar(255) | 商品名称   |
+| image          | varchar(255) | 商品图片路径 |
+| price          | double      | 商品单价   |
+| stock          | int         | 商品库存   |
+| description    | text        | 商品简介   |
+| updated_by     | bigint      | 更新人     |
+| updated_at     | datetime    | 更新时间   |
+| remarks        | text        | 备注       |
+| is_deleted     | varchar(2)  | 是否删除   |
+| deleted_by     | bigint      | 删除人     |
+| deleted_at     | datetime    | 删除时间   |
 
----
+**表备注**: 商品信息表，记录商品的详细资料，包括价格、库存、简介等。
 
-### 字典主表 (Dictionary)
+## 9. `product_order` 表
+| 字段名         | 类型        | 描述       |
+|----------------|-------------|------------|
+| order_code     | varchar(50) | 订单编号   |
+| user_id        | bigint      | 用户ID     |
+| product_id     | bigint      | 商品ID     |
+| order_time     | date        | 下单时间   |
+| status         | varchar(20) | 货物状态   |
+| updated_by     | bigint      | 更新人     |
+| updated_at     | datetime    | 更新时间   |
+| remarks        | text        | 备注       |
+| is_deleted     | varchar(2)  | 是否删除   |
+| deleted_by     | bigint      | 删除人     |
+| deleted_at     | datetime    | 删除时间   |
 
-| 字段           | 类型   | 描述           |
-| -------------- | ------ | -------------- |
-| `dictionaryId` | String | 字典ID（主键） |
-| `name`         | String | 字典名称       |
-| `description`  | String | 字典描述       |
-| `createTime`   | Date   | 创建时间       |
-| `updateTime`   | Date   | 更新时间       |
+**表备注**: 商品订单管理表，记录用户的商品购买订单，包括商品、状态、订单时间等。
 
-#### 示例数据：
+## 10. `sys_user_info` 表
+| 字段名         | 类型        | 描述       |
+|----------------|-------------|------------|
+| user_id        | bigint      | 用户ID     |
+| nick_name      | varchar(255) | 昵称       |
+| email          | varchar(255) | 邮箱       |
+| password       | varchar(255) | 密码       |
+| phone          | varchar(20)  | 手机号     |
+| avatar         | varchar(255) | 头像路径   |
+| user_type      | varchar(1)   | 用户类型   |
+| updated_by     | bigint      | 更新人     |
+| updated_at     | datetime    | 更新时间   |
+| remarks        | text        | 备注       |
+| is_deleted     | varchar(2)  | 是否删除   |
+| deleted_by     | bigint      | 删除人     |
+| deleted_at     | datetime    | 删除时间   |
 
-| dictionaryId | name       | description    | createTime          | updateTime          |
-| ------------ | ---------- | -------------- | ------------------- | ------------------- |
-| 1            | `宠物分类` | 宠物的分类类型 | 2025-02-07 10:00:00 | 2025-02-07 10:00:00 |
-| 2            | `宠物性别` | 宠物的性别     | 2025-02-07 10:00:00 | 2025-02-07 10:00:00 |
-| 3            | `健康状况` | 宠物的健康状况 | 2025-02-07 10:00:00 | 2025-02-07 10:00:00 |
-| 4            | `训练情况` | 宠物的训练情况 | 2025-02-07 10:00:00 | 2025-02-07 10:00:00 |
-
----
-
-### 字典子表 (DictionaryItem)
-
-| 字段           | 类型    | 描述             |
-| -------------- | ------- | ---------------- |
-| `itemId`       | String  | 字典项ID（主键） |
-| `dictionaryId` | String  | 关联字典ID       |
-| `value`        | String  | 字典项的值       |
-| `label`        | String  | 字典项标签       |
-| `sortOrder`    | Integer | 排序字段         |
-| `createTime`   | Date    | 创建时间         |
-| `updateTime`   | Date    | 更新时间         |
-
-#### 示例数据：
-
-| itemId | dictionaryId | value      | label      | sortOrder | createTime          | updateTime          |
-| ------ | ------------ | ---------- | ---------- | --------- | ------------------- | ------------------- |
-| 1      | 1            | `狗`       | `狗`       | 1         | 2025-02-07 10:00:00 | 2025-02-07 10:00:00 |
-| 2      | 1            | `猫`       | `猫`       | 2         | 2025-02-07 10:00:00 | 2025-02-07 10:00:00 |
-| 3      | 1            | `兔子`     | `兔子`     | 3         | 2025-02-07 10:00:00 | 2025-02-07 10:00:00 |
-| 4      | 2            | `男`       | `男`       | 1         | 2025-02-07 10:00:00 | 2025-02-07 10:00:00 |
-| 5      | 2            | `女`       | `女`       | 2         | 2025-02-07 10:00:00 | 2025-02-07 10:00:00 |
-| 6      | 3            | `健康`     | `健康`     | 1         | 2025-02-07 10:00:00 | 2025-02-07 10:00:00 |
-| 7      | 3            | `生病`     | `生病`     | 2         | 2025-02-07 10:00:00 | 2025-02-07 10:00:00 |
-| 8      | 3            | `需要治疗` | `需要治疗` | 3         | 2025-02-07 10:00:00 | 2025-02-07 10:00:00 |
-| 9      | 4            | `已训练`   | `已训练`   | 1         | 2025-02-07 10:00:00 | 2025-02-07 10:00:00 |
-| 10     | 4            | `未训练`   | `未训练`   | 2         | 2025-02-07 10:00:00 | 2025-02-07 10:00:00 |
-
----
-
-### 字典表设计说明：
-1. **字典主表**：
-   - `dictionaryId`: 字典的唯一标识。
-   - `name`: 字典的名称（例如“宠物分类”）。
-   - `description`: 字典的描述，解释该字典的用途。
-   - `createTime`: 字典的创建时间。
-   - `updateTime`: 字典的最后更新时间。
-
-2. **字典子表**：
-   - `itemId`: 字典项的唯一标识。
-   - `dictionaryId`: 关联的字典ID，指向字典主表中的 `dictionaryId`。
-   - `value`: 字典项的值（如“狗”，“猫”）。
-   - `label`: 字典项的标签，通常是用户可见的名称（如“狗”，“猫”）。
-   - `sortOrder`: 排序字段，用来控制字典项的显示顺序。
-   - `createTime` 和 `updateTime`: 字典项的创建时间和更新时间。
-
-这种设计方式便于字典项的扩展与修改，而且可以灵活地配置字典项的顺序和内容。如果需要进一步的调整或扩展，告诉我！
-
-### 字典表 (Dictionary)
-
-字典表中的内容可以按需求设计，例如：
-
-- **性别** (`gender`): ["男", "女"]
-- **健康状况** (`healthStatus`): ["健康", "生病", "需要治疗"]
-- **训练情况** (`training`): ["已训练", "未训练"]
-- **领养历史** (`adoptHistory`): ["已领养", "未领养"]
-- **申请状态** (`applicationStatus`): ["待审核", "通过", "拒绝"]
-- **货物状态** (`productStatus`): ["待发货", "已发货", "已送达"]
-- **用户类型** (`userType`): ["管理员", "普通用户"]
+**表备注**: 用户信息表，存储用户的基本信息，包括昵称、邮箱、密码、用户类型等。
 
 # 宠物领养平台功能设计
 
