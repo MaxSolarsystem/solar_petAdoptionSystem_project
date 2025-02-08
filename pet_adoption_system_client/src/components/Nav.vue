@@ -2,6 +2,7 @@
 import {ref} from 'vue';
 
 const isLoggedIn = ref(false);
+const isMenuOpen = ref(false);
 </script>
 
 <template>
@@ -29,12 +30,33 @@ const isLoggedIn = ref(false);
           个人中心
         </router-link>
       </div>
+
       <div class="navbar-right">
         <router-link v-if="!isLoggedIn" class="nav-link" to="/login">登录</router-link>
         <router-link v-if="!isLoggedIn" class="nav-link register" to="/register">注册</router-link>
         <div v-if="isLoggedIn" class="nav-link welcome">欢迎，用户</div>
+
+        <!-- 汉堡菜单 -->
+        <div class="hamburger" @click="isMenuOpen = !isMenuOpen">
+          <span class="line"></span>
+          <span class="line"></span>
+          <span class="line"></span>
+        </div>
       </div>
     </nav>
+
+    <!-- 弹出菜单 -->
+    <div v-if="isMenuOpen" class="mobile-menu">
+      <router-link class="nav-link" to="/" @click="isMenuOpen = false">主页</router-link>
+      <router-link class="nav-link" to="/petAdoption" @click="isMenuOpen = false">宠物领养</router-link>
+      <router-link class="nav-link" to="/store" @click="isMenuOpen = false">商店</router-link>
+      <router-link class="nav-link" to="/forum" @click="isMenuOpen = false">论坛</router-link>
+      <router-link class="nav-link" to="/userCenter" @click="isMenuOpen = false">个人中心</router-link>
+      <router-link v-if="!isLoggedIn" class="nav-link" to="/login" @click="isMenuOpen = false">登录</router-link>
+      <router-link v-if="!isLoggedIn" class="nav-link register" to="/register" @click="isMenuOpen = false">注册
+      </router-link>
+      <div v-if="isLoggedIn" class="nav-link welcome" @click="isMenuOpen = false">欢迎，用户</div>
+    </div>
   </header>
 </template>
 
@@ -139,6 +161,40 @@ body {
   border-radius: 12px;
 }
 
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 25px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.hamburger .line {
+  height: 3px;
+  background-color: #333;
+  border-radius: 5px;
+}
+
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.mobile-menu .nav-link {
+  font-size: 18px;
+  padding: 12px 20px;
+}
+
 @media (max-width: 768px) {
   .navbar {
     padding: 12px 16px;
@@ -156,6 +212,14 @@ body {
 
   .nav-icon {
     font-size: 16px;
+  }
+
+  .navbar-left {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
   }
 }
 </style>
