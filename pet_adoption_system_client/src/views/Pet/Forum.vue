@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  商店
+  论坛
 </template>
 
 <style scoped>

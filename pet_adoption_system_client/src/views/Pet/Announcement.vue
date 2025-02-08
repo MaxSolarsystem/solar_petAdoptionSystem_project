@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  商店
+  公告
 </template>
 
 <style scoped>

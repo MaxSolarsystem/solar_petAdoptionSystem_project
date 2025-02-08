@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  商店
+  宠物领养
 </template>
 
 <style scoped>
