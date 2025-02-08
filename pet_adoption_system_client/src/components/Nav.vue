@@ -8,11 +8,26 @@ const isLoggedIn = ref(false);
   <header>
     <nav class="navbar">
       <div class="navbar-left">
-        <router-link class="nav-link" to="/">主页</router-link>
-        <router-link class="nav-link" to="/petAdoption">宠物领养</router-link>
-        <router-link class="nav-link" to="/store">商店</router-link>
-        <router-link class="nav-link" to="/forum">论坛</router-link>
-        <router-link class="nav-link" to="/userCenter">个人中心</router-link>
+        <router-link class="nav-link" to="/">
+          <span class="nav-icon">🏠</span>
+          主页
+        </router-link>
+        <router-link class="nav-link" to="/petAdoption">
+          <span class="nav-icon">🐾</span>
+          宠物领养
+        </router-link>
+        <router-link class="nav-link" to="/store">
+          <span class="nav-icon">🛍️</span>
+          商店
+        </router-link>
+        <router-link class="nav-link" to="/forum">
+          <span class="nav-icon">💭</span>
+          论坛
+        </router-link>
+        <router-link class="nav-link" to="/userCenter">
+          <span class="nav-icon">👤</span>
+          个人中心
+        </router-link>
       </div>
       <div class="navbar-right">
         <router-link v-if="!isLoggedIn" class="nav-link" to="/login">登录</router-link>
@@ -39,71 +54,107 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 16px 32px;
-  background-color: #fff;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(10px);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
 }
 
 .navbar-left,
 .navbar-right {
   display: flex;
   gap: 24px;
+  align-items: center;
 }
 
 .nav-link {
   text-decoration: none;
-  color: #333;
-  font-size: 18px;
+  color: #555;
+  font-size: 16px;
   font-weight: 500;
-  transition: color 0.3s ease, transform 0.3s ease;
+  transition: all 0.3s ease;
   padding: 8px 16px;
-  border-radius: 4px;
-  display: inline-block;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  position: relative;
+}
+
+.nav-icon {
+  font-size: 18px;
+  transition: transform 0.3s ease;
 }
 
 .nav-link:hover {
-  color: #007bff;
-  transform: translateY(-2px);
+  color: #ff6b6b;
+  background: rgba(255, 107, 107, 0.1);
 }
 
-.nav-link:active {
-  transform: translateY(1px);
+.nav-link:hover .nav-icon {
+  transform: scale(1.2);
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background-color: #ff6b6b;
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.nav-link:hover::after {
+  width: 60%;
 }
 
 .register {
-  color: #007bff;
-  border: 1px solid #007bff;
+  color: #ff6b6b;
+  border: 2px solid #ff6b6b;
   background-color: transparent;
   font-weight: 600;
-  padding: 8px 16px;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  border-radius: 4px;
+  padding: 8px 20px;
+  transition: all 0.3s ease;
 }
 
 .register:hover {
-  background-color: #007bff;
-  color: #fff;
+  background-color: #ff6b6b;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
 }
 
 .welcome {
   color: #4caf50;
   font-weight: 600;
-  font-size: 16px;
+  background: rgba(76, 175, 80, 0.1);
+  padding: 8px 20px;
+  border-radius: 12px;
 }
 
 @media (max-width: 768px) {
   .navbar {
-    flex-direction: column;
-    gap: 20px;
-    align-items: center;
+    padding: 12px 16px;
   }
 
   .navbar-left,
   .navbar-right {
-    gap: 16px;
+    gap: 12px;
   }
 
   .nav-link {
+    font-size: 14px;
+    padding: 6px 12px;
+  }
+
+  .nav-icon {
     font-size: 16px;
   }
 }
