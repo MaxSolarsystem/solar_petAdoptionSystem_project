@@ -93,7 +93,11 @@ const articles = ref([
           <div v-for="(article, index) in hotArticles" 
                :key="article.id"
                class="hot-item">
+
             <div class="rank-number" :class="`rank-${index + 1}`">{{ index + 1 }}</div>
+                       <router-link 
+              :to="`/forum/info/${article.id}`"
+            >
             <div class="hot-content">
               <h3>{{ article.title }}</h3>
               <div class="hot-stats">
@@ -101,6 +105,7 @@ const articles = ref([
                 <span>❤️ {{ article.likes }}</span>
               </div>
             </div>
+              </router-link>
           </div>
         </div>
       </div>
@@ -118,6 +123,10 @@ const articles = ref([
             <div class="article-image">
               <img :src="article.image" :alt="article.title">
             </div>
+
+           <router-link 
+              :to="`/forum/info/${article.id}`"
+            >
             <div class="article-content">
               <h2 class="article-title">{{ article.title }}</h2>
               <div class="article-meta">
@@ -130,6 +139,7 @@ const articles = ref([
                 <span>💬 {{ article.comments }} 评论</span>
               </div>
             </div>
+            </router-link>
           </div>
         </div>
       </div>
@@ -307,6 +317,13 @@ const articles = ref([
   gap: 1rem;
   font-size: 0.9rem;
   color: #666;
+}
+
+.article-link {
+  display: flex;
+  width: 100%;
+  text-decoration: none;
+  color: inherit;
 }
 
 @media (max-width: 1024px) {

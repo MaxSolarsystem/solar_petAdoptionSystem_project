@@ -8,6 +8,7 @@ import PetAdoption from "../views/Pet/PetAdoption.vue";
 import Forum from "../views/Pet/Forum.vue";
 import UserCenter from "../views/Pet/UserCenter.vue";
 import PetAdoptionInfo from "../views/Info/petAdoptionInfo.vue";
+import ForumInfo from "../views/Info/ForumInfo.vue";
 
 const routes = [
     {
@@ -37,6 +38,12 @@ const routes = [
             {
                 path: 'forum',
                 component: Forum
+            },
+            {
+                path: 'forum/info/:id',
+                name: 'ForumInfo',
+                component: ForumInfo,
+                props: true
             },
             {
                 path: 'userCenter',

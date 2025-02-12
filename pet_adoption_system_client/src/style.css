@@ -1,3 +1,13 @@
 *{
     box-sizing: border-box;
 }
+a {
+    text-decoration: none;  /* 去掉下划线 */
+    color: inherit;         /* 继承父元素的颜色 */
+    outline: none;          /* 去掉点击时的轮廓线 */
+}
+a:hover {
+    color: #007bff;  /* 悬浮时改变颜色 */
+}
+
+
