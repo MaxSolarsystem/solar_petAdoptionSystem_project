@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 
 const userInfo = ref({
-  avatar: 'https://placekitten.com/200/200', // 默认头像
+  avatar: 'https://api.dicebear.com/7.x/micah/svg?seed=pet&backgroundColor=ffdfbf', // 默认头像
   email: 'user@example.com',
   phone: '',
   username: '爱心领养者'
