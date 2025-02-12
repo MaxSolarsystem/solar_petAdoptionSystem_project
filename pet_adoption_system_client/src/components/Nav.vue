@@ -3,7 +3,7 @@ import { ref, onMounted, onUnmounted } from 'vue';
 import { useRoute } from 'vue-router';
 
 const route = useRoute();
-const isLoggedIn = ref(false);
+const isLoggedIn = ref(true);
 const isMenuOpen = ref(false);
 const isMobile = ref(false);
 // 使用在线头像服务
@@ -35,7 +35,8 @@ const navItems = [
   { path: '/petAdoption', icon: '🐾', text: '宠物领养' },
   { path: '/store', icon: '🛍️', text: '商店' },
   { path: '/forum', icon: '💭', text: '论坛' },
-  { path: '/userCenter', icon: '👤', text: '个人中心' }
+  { path: '/userCenter', icon: '👤', text: '个人中心' },
+  { path: '/buyCar', icon: '🛒', text: '购物车' }
 ] as const;
 
 onMounted(() => {

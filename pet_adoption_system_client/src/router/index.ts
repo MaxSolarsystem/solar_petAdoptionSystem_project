@@ -9,6 +9,7 @@ import Forum from "../views/Pet/Forum.vue";
 import UserCenter from "../views/Pet/UserCenter.vue";
 import PetAdoptionInfo from "../views/Info/petAdoptionInfo.vue";
 import ForumInfo from "../views/Info/ForumInfo.vue";
+import BuyCar from "../views/Pet/BuyCar.vue";
 
 const routes = [
     {
@@ -48,6 +49,10 @@ const routes = [
             {
                 path: 'userCenter',
                 component: UserCenter
+            },
+            {
+                path: 'buyCar',
+                component: BuyCar
             },
         ]
     },
