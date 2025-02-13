@@ -6,7 +6,7 @@
     <div class="footer-content">
       <div class="footer-info">
         <div class="footer-logo">
-          <span class="logo-icon">🐾</span>
+          <span class="logo-icon">💖</span>
           <span class="logo-text">宠物领养平台</span>
         </div>
         <p class="footer-description">让每一个生命都被温柔以待</p>

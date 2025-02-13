@@ -38,7 +38,7 @@ const announcements = [
       >
         <div class="card-overlay"></div>
         <div class="card-content">
-          <div class="card-icon">🏠</div>
+          <div class="card-icon">🐾</div>
           <h2>{{ cards.adoption.title }}</h2>
           <p>{{ cards.adoption.description }}</p>
           <span class="card-action">立即查看 →</span>
@@ -88,13 +88,12 @@ const announcements = [
 <style scoped>
 .home-container {
   padding: 2rem;
-  min-height: 100vh;
   background: linear-gradient(135deg, #f6f9fc 0%, #ffffff 100%);
 }
 
 .hero-section {
   text-align: center;
-  padding: 4rem 0;
+  padding: 2rem 0;
   margin-bottom: 2rem;
 }
 
@@ -132,7 +131,7 @@ const announcements = [
   display: grid;
   grid-template-columns: 3fr 2fr;
   gap: 2rem;
-  max-width: 1400px;
+  max-width: 1600px;
   margin: 0 auto;
 }
 

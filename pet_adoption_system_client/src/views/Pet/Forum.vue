@@ -150,7 +150,6 @@ const articles = ref([
 <style scoped>
 .forum-container {
   padding: 2rem;
-  min-height: 100vh;
   background: linear-gradient(135deg, #f6f9fc 0%, #ffffff 100%);
 }
 
@@ -158,7 +157,7 @@ const articles = ref([
   display: grid;
   grid-template-columns: 300px 1fr;
   gap: 2rem;
-  max-width: 1400px;
+  max-width: 1600px;
   margin: 0 auto;
 }
 

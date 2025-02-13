@@ -155,12 +155,10 @@ const checkout = () => {
 <style scoped>
 .cart-page {
   padding: 2rem;
-  min-height: 100vh;
   background: linear-gradient(135deg, #f6f9fc 0%, #ffffff 100%);
 }
 
 .cart-container {
-  max-width: 1200px;
   margin: 0 auto;
   background: white;
   border-radius: 16px;

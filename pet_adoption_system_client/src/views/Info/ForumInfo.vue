@@ -212,7 +212,7 @@ onMounted(() => {
 }
 
 .article-container {
-  max-width: 900px;
+  max-width: 1200px;
   margin: 0 auto;
   background: white;
   border-radius: 16px;
@@ -436,6 +436,7 @@ onMounted(() => {
 }
 
 .comments-list {
+  margin-top: 2rem;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;

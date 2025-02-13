@@ -72,7 +72,7 @@ onUnmounted(() => {
           <router-link class="nav-link login-link" to="/login">登录</router-link>
           <router-link class="nav-link register-link" to="/register">注册</router-link>
         </template>
-        <div v-else class="user-info">
+        <div v-else class="user-info user-info-big">
           <span class="welcome-text">欢迎，用户</span>
           <div class="user-avatar">
             <img :src="avatarUrl" alt="用户头像">
@@ -363,17 +363,6 @@ onUnmounted(() => {
   color: white;
 }
 
-/* 动画 */
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.3s ease;
-}
-
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-}
-
 @keyframes slideIn {
   from {
     transform: translateX(100%);
@@ -402,12 +391,12 @@ onUnmounted(() => {
     display: none;
   }
 
-  .user-info {
-    padding: 6px 12px;
-  }
-
-  .welcome-text {
+  .user-info-big{
     display: none;
+  }
+  .user-info {
+    margin-top: 50px;
+    padding: 6px 12px;
   }
 }
 </style>

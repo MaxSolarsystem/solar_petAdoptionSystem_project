@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
-import { useRoute } from 'vue-router'
+import {ref, onMounted} from 'vue'
+import {useRoute} from 'vue-router'
 
 const route = useRoute()
 const petId = route.params.id
@@ -56,13 +56,13 @@ onMounted(() => {
           <div class="category-tag">{{ petInfo.category }}</div>
         </div>
         <div class="image-gallery">
-          <img 
-            v-for="(image, index) in petInfo.images" 
-            :key="index"
-            :src="image" 
-            :alt="`${petInfo.name}-${index}`"
-            @click="petInfo.image = image"
-            :class="{ active: petInfo.image === image }"
+          <img
+              v-for="(image, index) in petInfo.images"
+              :key="index"
+              :src="image"
+              :alt="`${petInfo.name}-${index}`"
+              @click="petInfo.image = image"
+              :class="{ active: petInfo.image === image }"
           >
         </div>
       </div>
@@ -127,7 +127,7 @@ onMounted(() => {
           </div>
           <button class="contact-button">
             <span class="icon">💌</span>
-            联系领养
+            申请领养
           </button>
         </div>
       </div>
