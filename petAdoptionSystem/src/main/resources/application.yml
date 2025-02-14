@@ -1,7 +1,18 @@
 spring:
   application:
     name: petAdoptionSystem
-
+  datasource:
+    url: jdbc:mysql://10.243.100.100:3306/solar_pet_adoption?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
+    username: root
+    password: 3064
+    driver-class-name: com.mysql.cj.jdbc.Driver
 
 server:
   port: 9090
+
+mybatis-plus:
+  mapper-locations: classpath:/mapper/*.xml
+  type-aliases-package: com.solar.petadoptionsystem.system.**.dto
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
