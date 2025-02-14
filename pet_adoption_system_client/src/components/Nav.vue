@@ -3,7 +3,7 @@ import { ref, onMounted, onUnmounted } from 'vue';
 import { useRoute } from 'vue-router';
 
 const route = useRoute();
-const isLoggedIn = ref(false);
+const isLoggedIn = ref(true);
 const isMenuOpen = ref(false);
 const isMobile = ref(false);
 // 使用在线头像服务
@@ -35,7 +35,8 @@ const navItems = [
   { path: '/petAdoption', icon: '🐾', text: '宠物领养' },
   { path: '/store', icon: '🛍️', text: '商店' },
   { path: '/forum', icon: '💭', text: '论坛' },
-  { path: '/userCenter', icon: '👤', text: '个人中心' }
+  { path: '/userCenter', icon: '👤', text: '个人中心' },
+  { path: '/buyCar', icon: '🛒', text: '购物车' }
 ] as const;
 
 onMounted(() => {
@@ -71,7 +72,7 @@ onUnmounted(() => {
           <router-link class="nav-link login-link" to="/login">登录</router-link>
           <router-link class="nav-link register-link" to="/register">注册</router-link>
         </template>
-        <div v-else class="user-info">
+        <div v-else class="user-info user-info-big">
           <span class="welcome-text">欢迎，用户</span>
           <div class="user-avatar">
             <img :src="avatarUrl" alt="用户头像">
@@ -362,17 +363,6 @@ onUnmounted(() => {
   color: white;
 }
 
-/* 动画 */
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.3s ease;
-}
-
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-}
-
 @keyframes slideIn {
   from {
     transform: translateX(100%);
@@ -401,12 +391,12 @@ onUnmounted(() => {
     display: none;
   }
 
-  .user-info {
-    padding: 6px 12px;
-  }
-
-  .welcome-text {
+  .user-info-big{
     display: none;
+  }
+  .user-info {
+    margin-top: 50px;
+    padding: 6px 12px;
   }
 }
 </style>

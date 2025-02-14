@@ -7,6 +7,9 @@ import Store from "../views/Pet/Store.vue";
 import PetAdoption from "../views/Pet/PetAdoption.vue";
 import Forum from "../views/Pet/Forum.vue";
 import UserCenter from "../views/Pet/UserCenter.vue";
+import PetAdoptionInfo from "../views/Info/petAdoptionInfo.vue";
+import ForumInfo from "../views/Info/ForumInfo.vue";
+import BuyCar from "../views/Pet/BuyCar.vue";
 
 const routes = [
     {
@@ -24,6 +27,12 @@ const routes = [
                 component: PetAdoption
             },
             {
+                path: 'petAdoption/info/:id',
+                name: 'PetAdoptionInfo',
+                component: PetAdoptionInfo,
+                props: true
+            },
+            {
                 path: 'store',
                 component: Store
             },
@@ -32,10 +41,19 @@ const routes = [
                 component: Forum
             },
             {
+                path: 'forum/info/:id',
+                name: 'ForumInfo',
+                component: ForumInfo,
+                props: true
+            },
+            {
                 path: 'userCenter',
                 component: UserCenter
             },
-
+            {
+                path: 'buyCar',
+                component: BuyCar
+            },
         ]
     },
     {

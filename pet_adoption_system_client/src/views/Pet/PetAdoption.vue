@@ -228,7 +228,9 @@ const pets = ref([
             </span>
             <span class="pet-breed">{{ pet.breed }}</span>
           </div>
-          <button class="adopt-button">了解更多</button>
+            <router-link :to="`/petAdoption/info/${pet.id}`">
+              <button class="adopt-button">了解更多</button>
+            </router-link>
         </div>
       </div>
     </div>
